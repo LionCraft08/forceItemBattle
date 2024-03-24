@@ -1,0 +1,17 @@
+name: forceItemBattle
+version: '${project.version}'
+main: me.lioncraft.forceitembattle.ForceItemBattle
+api-version: '1.20'
+commands:
+  start:
+    permission: OP
+  settings:
+    permission: OP
+  finish:
+    permission: OP
+  forceitembattle:
+    aliases: fib
+    description: Important functions for the Battle!
+  backpack:
+    aliases: bp
+    description: Opens a shared Inventory.

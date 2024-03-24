@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="forceItemBattle:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/forceItemBattle_jar</output-path>
+    <root id="archive" name="forceItemBattle.jar">
+      <element id="module-output" name="forceItemBattle" />
+    </root>
+  </artifact>
+</component>
