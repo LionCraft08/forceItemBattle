@@ -21,7 +21,7 @@ public class delayedStartup extends BukkitRunnable {
 
     @Override
     public void run() {
-
+        try {
             if (Bukkit.getPluginManager().isPluginEnabled(mainClass.getPlugin())) {
                 if (Bukkit.getPluginManager().isPluginEnabled(LionSystems.getPlugin())) {
                     data.notAllowedItems = new ArrayList<>();
@@ -93,8 +93,18 @@ public class delayedStartup extends BukkitRunnable {
                     }
                     fibTask.restoreData();
                     ForceItemBattle.restoreBackpacks();
+                    return;
+                } else {
+                    Bukkit.getLogger().warning("<ForceItemBattle> This Plugin requires me.yourname.LionSystems to work");
                 }
+            } else {
+                Bukkit.getLogger().warning("<ForceItemBattle> This Plugin requires de.lioncraft.lionapi");
+            }
+        }catch (NoClassDefFoundError e){
+            Bukkit.getLogger().warning("<ForceItemBattle> This Plugin requires de.lioncraft.lionapi");
+            Bukkit.getPluginManager().disablePlugin(ForceItemBattle.getPlugin());
         }
+        Bukkit.getPluginManager().disablePlugin(ForceItemBattle.getPlugin());
     }
     Plugin plugin;
     public delayedStartup(Plugin plugin){

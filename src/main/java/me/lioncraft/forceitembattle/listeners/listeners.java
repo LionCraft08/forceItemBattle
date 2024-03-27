@@ -55,11 +55,11 @@ public class listeners implements Listener {
                 }
             }
         } else if (e.getCurrentItem() != null) {
-            if (e.getView().getTitle().equals(ChatColor.GOLD + "RESULTS")) {
+            if (e.getView().title().equals(Component.text("RESULTS", TextColor.color(255, 255, 0)))) {
                 e.setCancelled(true);
                 if (e.getCurrentItem().equals(new ButtonCreators().nextPage())) {
                     SkullMeta sm = (SkullMeta) e.getClickedInventory().getItem(4).getItemMeta();
-                    new forceItemUtils().openResultGUI(getScoreboardManager().getMainScoreboard().getPlayerTeam(sm.getOwningPlayer()), Integer.parseInt(sm.getDisplayName()), (Player) e.getWhoClicked());
+                    forceItemUtils.openResultGUI(getScoreboardManager().getMainScoreboard().getPlayerTeam(sm.getOwningPlayer()), Integer.parseInt(sm.getDisplayName()), (Player) e.getWhoClicked());
                 }
             }
 

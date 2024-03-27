@@ -79,9 +79,11 @@ public final class ForceItemBattle extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        if(!data.players.isEmpty()){
-            fibTask.saveData();
-            saveBackpacks();
+        if(data.players != null) {
+            if (!data.players.isEmpty()) {
+                fibTask.saveData();
+                saveBackpacks();
+            }
         }
 
     }

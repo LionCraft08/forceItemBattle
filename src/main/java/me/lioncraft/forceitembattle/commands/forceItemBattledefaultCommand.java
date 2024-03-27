@@ -84,6 +84,7 @@ public class forceItemBattledefaultCommand implements TabExecutor {
                                 Player player = Bukkit.getPlayer(strings[1]);
                                 if(player == null){
                                     commandSender.sendMessage(ForceItemBattle.messagePrefix + "Could not find that Player!");
+                                    break;
                                 }
                                 player.getInventory().addItem(new ButtonCreators().Joker(Integer.parseInt(strings[2])));
                             }catch (NumberFormatException e){

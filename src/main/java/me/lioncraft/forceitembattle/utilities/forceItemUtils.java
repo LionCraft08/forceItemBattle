@@ -14,7 +14,6 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.scoreboard.Team;
 
 import java.util.ArrayList;
@@ -46,7 +45,7 @@ public class forceItemUtils {
 
     }
     public static void openResultGUI(Team team, int page, Player viewer){
-        Inventory inv = Bukkit.createInventory(viewer, 54, ChatColor.GOLD + "RESULTS");
+        Inventory inv = Bukkit.createInventory(viewer, 54, Component.text("RESULTS", TextColor.color(255, 255, 0)));
         inv.setContents(new ButtonCreators().block(54));
         ItemStack phead = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta phmeta = (SkullMeta) phead.getItemMeta();
@@ -124,9 +123,9 @@ public class forceItemUtils {
         }
         int i = new Random().nextInt(10);
         String tablisttask;
-        Component c = null;
+        Component c;
         BossBar.Color bc;
-        Component Message = null;
+        Component Message;
         if(i<=7){
             Material m;
             do {
@@ -137,7 +136,7 @@ public class forceItemUtils {
             data.currentTeamTask.put(team, fibTask);
             tablisttask = m.getItemTranslationKey();
             c = Component.translatable(tablisttask);
-            Message = Component.text(ForceItemBattle.messagePrefix).append(Component.text(ChatColor.AQUA + " NEW TASK: Habe ")).append(c).append(Component.text(ChatColor.AQUA + " im Inventar"));
+            Message = Component.text(ForceItemBattle.messagePrefix).append(Component.text(" NEW TASK: Habe ", TextColor.color(0, 255, 255))).append(c).append(Component.text(" im Inventar", TextColor.color(0, 255, 255)));
             bc = BossBar.Color.PURPLE;
             new checkTask(fibTask).runTaskLater(ForceItemBattle.getPlugin(), 5);
         } else if (i<=8) {
@@ -146,7 +145,7 @@ public class forceItemUtils {
             data.currentTeamTask.put(team, fibTask);
             tablisttask = fibTask.getBiome().translationKey();
             c = Component.translatable(tablisttask);
-            Message = Component.text(ForceItemBattle.messagePrefix).append(Component.text(ChatColor.AQUA + " NEW TASK: Betrete ")).append(c);
+            Message = Component.text(ForceItemBattle.messagePrefix).append(Component.text(" NEW TASK: Betrete ", TextColor.color(0, 255, 255))).append(c);
             bc = BossBar.Color.BLUE;
             new checkTask(fibTask).runTaskLater(ForceItemBattle.getPlugin(), 5);
         } else {
@@ -155,11 +154,11 @@ public class forceItemUtils {
             data.currentTeamTask.put(team, fibTask);
             tablisttask = fibTask.getEntityType().translationKey();
             c = Component.translatable(tablisttask);
-            Message = Component.text(ForceItemBattle.messagePrefix).append(Component.text(ChatColor.AQUA + " NEW TASK: Töte ")).append(c);
+            Message = Component.text(ForceItemBattle.messagePrefix).append(Component.text(" NEW TASK: Töte ", TextColor.color(0, 255, 255))).append(c);
             bc = BossBar.Color.YELLOW;
         }
         team.sendMessage(Message);
-        Component prefix = Component.text(ChatColor.GRAY + "[").append(c).append(Component.text(ChatColor.GRAY + "] "));
+        Component prefix = Component.text("[", TextColor.color(128, 128, 128)).append(c).append(Component.text("] ", TextColor.color(128, 128, 128)));
         team.prefix(prefix);
         for(String s : team.getEntries()){
             Player p = Bukkit.getPlayer(s);
